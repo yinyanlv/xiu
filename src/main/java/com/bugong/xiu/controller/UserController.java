@@ -1,0 +1,30 @@
+package com.bugong.xiu.controller;
+
+import com.bugong.xiu.entity.User;
+import com.bugong.xiu.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
+@Controller
+@RequestMapping(value = "/user")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/create")
+    @ResponseBody
+    public String createUser() {
+        return "ok";
+    }
+
+    @RequestMapping(value = "/get-all-users")
+    @ResponseBody
+    public List<User> getUsers() {
+        return this.userService.getAllUsers();
+    }
+}
